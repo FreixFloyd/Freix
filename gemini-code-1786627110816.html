@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CHAOS & ECHOES</title>
+  <style>
+    /* 1. 어둡고 신비로운 전체 배경 */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background-color: #050508;
+      color: #e2e8f0;
+      font-family: 'Courier New', Courier, monospace;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* 2. CRT TV 스타일 노이즈 라인 효과 */
+    body::before {
+      content: " ";
+      position: absolute;
+      top: 0; left: 0; bottom: 0; right: 0;
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+      background-size: 100% 4px;
+      z-index: 10;
+      pointer-events: none;
+      opacity: 0.6;
+    }
+
+    /* 3. 글리치 텍스트 애니메이션 */
+    .glitch {
+      font-size: 3.5rem;
+      font-weight: 900;
+      letter-spacing: 5px;
+      position: relative;
+      color: #ffffff;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      clip: rect(0, 0, 0, 0);
+    }
+
+    /* Red Glitch Shift */
+    .glitch::before {
+      left: -2px;
+      text-shadow: 2px 0 #ff0055;
+      animation: glitch-anim-1 2s infinite linear alternate-reverse;
+    }
+
+    /* Cyan Glitch Shift */
+    .glitch::after {
+      left: 2px;
+      text-shadow: -2px 0 #00ffff;
+      animation: glitch-anim-2 3s infinite linear alternate-reverse;
+    }
+
+    @keyframes glitch-anim-1 {
+      0% { clip: rect(20px, 9999px, 15px, 0); }
+      20% { clip: rect(60px, 9999px, 70px, 0); }
+      40% { clip: rect(10px, 9999px, 85px, 0); }
+      60% { clip: rect(40px, 9999px, 10px, 0); }
+      80% { clip: rect(80px, 9999px, 50px, 0); }
+      100% { clip: rect(30px, 9999px, 30px, 0); }
+    }
+
+    @keyframes glitch-anim-2 {
+      0% { clip: rect(10px, 9999px, 80px, 0); }
+      25% { clip: rect(50px, 9999px, 10px, 0); }
+      50% { clip: rect(30px, 9999px, 60px, 0); }
+      75% { clip: rect(70px, 9999px, 40px, 0); }
+      100% { clip: rect(20px, 9999px, 90px, 0); }
+    }
+
+    /* 서브 타이틀 및 지시문 */
+    .sub-text {
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      color: #64748b;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.9; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 글리치 타이틀 (앨범명이나 아티스트명으로 변경해보세요) -->
+  <h1 class="glitch" data-text="SILENT VOID">SILENT VOID</h1>
+  <p class="sub-text">[ CLICK ANYWHERE TO ENTER THE MIND ]</p>
+
+</body>
+</html>
